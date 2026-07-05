@@ -1,17 +1,839 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>CoachNow — Find a Sports Coach in Dubai, Booked in One Tap</title>
-    <meta name="description" content="Book vetted swimming, fitness, tennis and kids sports coaches across Dubai in one tap. No apps, no waiting — just message and train." />
-    <meta name="theme-color" content="#FAF8F4" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coach Now Dubai — Elite Private Swimming Coaches</title>
+<meta name="description" content="Dubai's most exclusive private swimming coaching. Bespoke lessons for discerning families and individuals in the comfort of your villa pool." />
+<meta name="theme-color" content="#0a1628" />
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/index.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.css" />
+
+<style>
+:root{
+  --navy:#0a1628;
+  --navy-light:#142238;
+  --navy-soft:#1e3150;
+  --gold:#c9a961;
+  --gold-light:#d4b876;
+  --gold-dark:#a88a4a;
+  --cream:#f8f5f0;
+  --ivory:#fdfbf7;
+  --ink:#1a1a1a;
+  --muted:#6b7280;
+  --wa:#25D366;
+  --shadow:0 20px 50px rgba(10,22,40,.12);
+  --shadow-lg:0 30px 80px rgba(10,22,40,.18);
+  --radius:4px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:var(--ivory);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.15;color:var(--navy);letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* ---------- HEADER ---------- */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,22,40,.96);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,169,97,.15);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Playfair Display';font-weight:600;font-size:1.4rem;color:#fff;letter-spacing:.02em}
+.logo-mark{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  display:grid;place-items:center;color:var(--navy);
+  font-family:'Playfair Display';font-weight:700;font-size:1.1rem;
+  box-shadow:0 4px 14px rgba(201,169,97,.35);
+}
+.logo small{display:block;font-family:'Inter';font-size:.65rem;letter-spacing:.25em;color:var(--gold);font-weight:400;margin-top:2px}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:#fff;
+  padding:11px 22px;border-radius:var(--radius);
+  font-weight:500;font-size:.9rem;
+  border:1px solid rgba(201,169,97,.4);
+  transition:all .3s ease;
+  letter-spacing:.04em;
+}
+.nav-cta:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.nav-cta svg{width:16px;height:16px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:calc(100vh - 78px);
+  display:flex;align-items:center;
+  color:#fff;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(135deg, rgba(10,22,40,.72) 0%, rgba(10,22,40,.45) 45%, rgba(10,22,40,.25) 100%),
+    url('https://image.qwenlm.ai/public_source/22ed6e37-b9ab-4896-8e2c-687eccfa00f7/14f5b2005-11ba-4c84-bfea-01b327276553.png') center/cover no-repeat;
+  z-index:-1;
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at top right, rgba(201,169,97,.12), transparent 50%);
+}
+.hero-content{padding:100px 0 120px;max-width:780px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 18px;border-radius:var(--radius);
+  font-size:.78rem;font-weight:500;
+  margin-bottom:28px;
+  background:rgba(201,169,97,.12);
+  border:1px solid rgba(201,169,97,.35);
+  color:var(--gold-light);
+  letter-spacing:.15em;text-transform:uppercase;
+}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,169,97,.2)}
+.hero h1{
+  color:#fff;font-size:clamp(2.4rem, 5.5vw, 4.2rem);
+  margin-bottom:24px;
+}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:500}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.2rem);color:rgba(255,255,255,.95);margin-bottom:40px;max-width:620px;font-weight:300;text-shadow:0 2px 6px rgba(0,0,0,.35)}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--gold);color:var(--navy);
+  padding:18px 34px;border-radius:var(--radius);
+  font-weight:600;font-size:1rem;
+  box-shadow:0 14px 34px rgba(201,169,97,.35);
+  transition:all .3s ease;
+  letter-spacing:.02em;
+}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(201,169,97,.5);background:var(--gold-light)}
+.btn-wa svg{width:20px;height:20px}
+.hero-micro{margin-top:18px;font-size:.88rem;color:rgba(255,255,255,.8);letter-spacing:.04em;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.hero-stats{
+  display:flex;gap:56px;margin-top:64px;flex-wrap:wrap;
+  padding-top:40px;border-top:1px solid rgba(201,169,97,.3);
+}
+.stat{display:flex;flex-direction:column}
+.stat b{font-family:'Playfair Display';font-size:2rem;color:var(--gold);font-weight:500}
+.stat span{font-size:.8rem;color:rgba(255,255,255,.8);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+
+/* ---------- SECTIONS ---------- */
+section{padding:110px 0}
+.section-head{text-align:center;max-width:760px;margin:0 auto 72px}
+.section-head .eyebrow{
+  display:inline-block;color:var(--gold-dark);font-weight:500;
+  font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:18px;
+  position:relative;padding:0 40px;
+}
+.section-head .eyebrow::before,.section-head .eyebrow::after{
+  content:"";position:absolute;top:50%;width:24px;height:1px;background:var(--gold);
+}
+.section-head .eyebrow::before{left:0}
+.section-head .eyebrow::after{right:0}
+.section-head h2{font-size:clamp(2rem,3.8vw,3rem);margin-bottom:18px}
+.section-head h2 em{font-style:italic;color:var(--gold-dark)}
+.section-head p{color:var(--muted);font-size:1.05rem;font-weight:300}
+
+/* ---------- EXPERIENCE ---------- */
+.experience{background:var(--cream)}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.exp-card{
+  background:#fff;padding:40px 32px;
+  border-top:2px solid var(--gold);
+  transition:transform .4s ease;
+}
+.exp-card:hover{transform:translateY(-6px)}
+.exp-num{font-family:'Playfair Display';font-size:.9rem;color:var(--gold-dark);letter-spacing:.2em;margin-bottom:14px}
+.exp-card h4{font-family:'Playfair Display';font-size:1.35rem;margin-bottom:12px;font-weight:600}
+.exp-card p{color:var(--muted);font-size:.95rem;font-weight:300}
+
+/* ---------- COACHES ---------- */
+.coaches{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.coaches::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 10% 20%, rgba(201,169,97,.08), transparent 40%),
+             radial-gradient(circle at 90% 80%, rgba(201,169,97,.06), transparent 40%);
+}
+.coaches .section-head h2{color:#fff}
+.coaches .section-head p{color:rgba(255,255,255,.65)}
+.coaches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;z-index:1}
+.coach-card{
+  background:var(--navy-light);
+  border:1px solid rgba(201,169,97,.15);
+  border-radius:var(--radius);
+  overflow:hidden;
+  transition:all .4s ease;
+}
+.coach-card:hover{border-color:var(--gold);transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.coach-img{height:340px;overflow:hidden;position:relative}
+.coach-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.coach-card:hover .coach-img img{transform:scale(1.06)}
+.coach-img::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(10,22,40,.8) 100%);
+}
+.coach-tag{
+  position:absolute;top:20px;left:20px;z-index:2;
+  background:var(--gold);color:var(--navy);
+  padding:6px 14px;border-radius:var(--radius);
+  font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+}
+.coach-body{padding:32px 28px}
+.coach-body h3{color:#fff;font-size:1.5rem;margin-bottom:6px}
+.coach-role{color:var(--gold);font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;font-weight:500}
+.coach-meta{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(201,169,97,.15)}
+.coach-meta div{display:flex;align-items:center;gap:10px;font-size:.88rem;color:rgba(255,255,255,.8)}
+.coach-meta svg{width:16px;height:16px;color:var(--gold);flex-shrink:0}
+.coach-desc{color:rgba(255,255,255,.7);font-size:.92rem;margin-bottom:24px;font-weight:300;line-height:1.6}
+.coach-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:var(--gold);
+  padding:12px 22px;border-radius:var(--radius);
+  font-weight:500;font-size:.88rem;
+  border:1px solid var(--gold);
+  transition:all .3s ease;
+  letter-spacing:.05em;
+}
+.coach-btn:hover{background:var(--gold);color:var(--navy)}
+.coach-btn svg{width:16px;height:16px}
+
+/* ---------- AUDIENCE ---------- */
+.audience{background:var(--ivory)}
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.audience-card{
+  background:#fff;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform .4s ease;
+}
+.audience-card:hover{transform:translateY(-6px)}
+.audience-img{height:320px;overflow:hidden}
+.audience-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.audience-card:hover .audience-img img{transform:scale(1.05)}
+.audience-body{padding:44px 40px}
+.audience-body .eyebrow{
+  display:inline-block;color:var(--gold-dark);font-weight:500;
+  font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px;
+}
+.audience-body h3{font-size:1.8rem;margin-bottom:14px}
+.audience-body > p{color:var(--muted);font-weight:300;margin-bottom:22px}
+.audience-body ul{list-style:none}
+.audience-body li{
+  padding:12px 0 12px 34px;position:relative;
+  border-bottom:1px solid rgba(201,169,97,.15);
+  font-size:.95rem;
+}
+.audience-body li:last-child{border-bottom:none}
+.audience-body li::before{
+  content:"✦";position:absolute;left:0;top:12px;
+  color:var(--gold);font-size:.9rem;
+}
+.audience-body li strong{color:var(--navy);font-weight:600}
+
+/* ---------- HOW IT WORKS ---------- */
+.how{background:var(--cream)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}
+.step{
+  background:#fff;padding:44px 32px;
+  text-align:center;
+  border:1px solid rgba(201,169,97,.2);
+  transition:all .4s ease;
+  position:relative;
+}
+.step:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:var(--shadow)}
+.step-num{
+  font-family:'Playfair Display';
+  width:64px;height:64px;border-radius:50%;
+  background:var(--navy);color:var(--gold);
+  display:grid;place-items:center;margin:0 auto 22px;
+  font-size:1.5rem;font-weight:500;
+}
+.step-icon{font-size:2rem;margin-bottom:10px}
+.step h3{font-size:1.3rem;margin-bottom:12px}
+.step p{color:var(--muted);font-size:.95rem;font-weight:300}
+
+/* ---------- PRICING ---------- */
+.pricing{background:var(--ivory)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:920px;margin:0 auto}
+.price-card{
+  background:#fff;
+  padding:48px 40px;
+  border:1px solid rgba(201,169,97,.2);
+  position:relative;transition:all .4s ease;
+}
+.price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.price-card.featured{
+  background:var(--navy);color:#fff;
+  border-color:var(--gold);
+}
+.price-card.featured h3,.price-card.featured .price{color:#fff}
+.price-badge{
+  position:absolute;top:-14px;right:32px;
+  background:var(--gold);color:var(--navy);
+  padding:7px 16px;border-radius:var(--radius);
+  font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+}
+.price-card .eyebrow{
+  display:block;color:var(--gold-dark);font-weight:500;
+  font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px;
+}
+.price-card.featured .eyebrow{color:var(--gold)}
+.price-card h3{font-size:1.6rem;margin-bottom:8px}
+.price-card .price{
+  font-family:'Playfair Display';font-size:3.2rem;font-weight:500;
+  color:var(--navy);margin:18px 0 6px;
+}
+.price-card .price small{font-size:1rem;color:var(--muted);font-weight:400;letter-spacing:.05em}
+.price-card.featured .price small{color:rgba(255,255,255,.6)}
+.price-card .tagline{color:var(--muted);font-size:.95rem;margin-bottom:28px;font-weight:300}
+.price-card.featured .tagline{color:rgba(255,255,255,.7)}
+.price-card ul{list-style:none;margin-bottom:32px}
+.price-card li{padding:10px 0 10px 30px;position:relative;font-size:.95rem;font-weight:300}
+.price-card.featured li{color:rgba(255,255,255,.85)}
+.price-card li::before{
+  content:"";position:absolute;left:0;top:10px;
+  color:var(--gold);font-size:.85rem;
+}
+.price-card .btn-wa{width:100%;justify-content:center;padding:16px 24px;font-size:.95rem}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials{background:var(--cream)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial{
+  background:#fff;
+  padding:40px 32px;
+  border-top:2px solid var(--gold);
+  transition:transform .4s ease;
+}
+.testimonial:hover{transform:translateY(-6px)}
+.stars{color:var(--gold);margin-bottom:18px;font-size:1rem;letter-spacing:3px}
+.testimonial p{font-size:1rem;line-height:1.75;margin-bottom:28px;color:var(--ink);font-weight:300;font-style:italic}
+.testimonial .author{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(201,169,97,.2)}
+.avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--navy);color:var(--gold);
+  display:grid;place-items:center;
+  font-family:'Playfair Display';font-weight:600;font-size:1rem;
+}
+.author-info b{display:block;font-size:.95rem;color:var(--navy);font-weight:600}
+.author-info span{font-size:.8rem;color:var(--muted);letter-spacing:.05em}
+
+/* ---------- FINAL CTA ---------- */
+.final-cta{
+  background:var(--navy);
+  color:#fff;text-align:center;padding:120px 0;
+  position:relative;overflow:hidden;
+}
+.final-cta::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 50%, rgba(201,169,97,.15), transparent 50%),
+             radial-gradient(circle at 70% 50%, rgba(201,169,97,.1), transparent 50%);
+}
+.final-cta .container{position:relative;z-index:1}
+.final-cta h2{color:#fff;font-size:clamp(2.2rem,4.5vw,3.4rem);margin-bottom:20px}
+.final-cta h2 em{color:var(--gold);font-style:italic}
+.final-cta p{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:620px;margin:0 auto 40px;font-weight:300}
+.final-cta .btn-wa{font-size:1.05rem;padding:20px 44px}
+.pulse{animation:pulse 2.5s infinite}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(201,169,97,.5)}
+  50%{box-shadow:0 0 0 18px rgba(201,169,97,0)}
+}
+.final-micro{margin-top:22px;font-size:.85rem;color:rgba(255,255,255,.5);letter-spacing:.08em}
+
+/* ---------- FOOTER ---------- */
+footer{background:#060d18;color:rgba(255,255,255,.6);padding:70px 0 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:50px}
+footer h5{color:#fff;font-family:'Playfair Display';font-size:1.05rem;margin-bottom:20px;font-weight:500}
+footer a{color:rgba(255,255,255,.6);transition:color .2s;font-size:.92rem}
+footer a:hover{color:var(--gold)}
+footer ul{list-style:none}
+footer li{padding:7px 0}
+.footer-brand p{font-size:.9rem;margin-top:16px;max-width:340px;font-weight:300;line-height:1.7}
+.socials{display:flex;gap:12px;margin-top:22px}
+.socials a{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(201,169,97,.1);
+  display:grid;place-items:center;
+  transition:all .3s ease;
+  border:1px solid rgba(201,169,97,.2);
+}
+.socials a:hover{background:var(--gold);border-color:var(--gold)}
+.socials svg{width:16px;height:16px;fill:var(--gold)}
+.footer-bottom{
+  border-top:1px solid rgba(201,169,97,.12);
+  padding-top:24px;text-align:center;font-size:.82rem;letter-spacing:.05em;
+}
+
+/* ---------- FLOATING WA ---------- */
+.float-wa{
+  position:fixed;bottom:28px;right:28px;z-index:99;
+  width:64px;height:64px;border-radius:50%;
+  background:var(--gold);color:var(--navy);
+  display:grid;place-items:center;
+  box-shadow:0 12px 34px rgba(201,169,97,.5);
+  transition:transform .3s ease;
+  animation:pulse 2.5s infinite;
+}
+.float-wa:hover{transform:scale(1.1)}
+.float-wa svg{width:30px;height:30px}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 960px){
+  section{padding:80px 0}
+  .audience-grid, .pricing-grid, .coaches-grid, .testimonials-grid, .steps-grid, .footer-grid{grid-template-columns:1fr}
+  .hero-stats{gap:32px}
+  .nav-cta span{display:none}
+  .nav-cta{padding:10px 14px}
+  .float-wa{bottom:20px;right:20px;width:56px;height:56px}
+  .float-wa svg{width:26px;height:26px}
+  .audience-body{padding:32px 28px}
+  .price-card{padding:40px 28px}
+}
+@media (max-width: 480px){
+  .hero-content{padding:70px 0 90px}
+  .btn-wa{padding:16px 26px;font-size:.95rem}
+  .audience-img{height:240px}
+  .coach-img{height:300px}
+  .container{padding:0 20px}
+}
+
+/* ---------- REVEAL ANIMATION ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">C</span>
+      <div>
+        Coach Now
+        <small>DUBAI · EST. 2024</small>
+      </div>
+    </a>
+    <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20private%20swimming%20lessons." class="nav-cta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+      <span>Contact Us</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-badge reveal">
+      <span class="dot"></span>
+      By Invitation · Limited Availability
+    </div>
+    <h1 class="reveal">Dubai's Most <em>Exclusive</em> Private Swimming Coaching</h1>
+    <p class="reveal">Bespoke one-on-one lessons delivered to your villa pool by elite, internationally-certified coaches. A discreet, refined experience for discerning families and individuals.</p>
+    <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20private%20swimming%20lessons." class="btn-wa reveal" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+      Request Your Private Session
+    </a>
+    <p class="hero-micro reveal">✦ Discreet · Certified · Tailored to You</p>
+    <div class="hero-stats reveal">
+      <div class="stat"><b>12+</b><span>Years Experience</span></div>
+      <div class="stat"><b>500+</b><span>Private Clients</span></div>
+      <div class="stat"><b>4.9★</b><span>Client Rating</span></div>
+      <div class="stat"><b>24h</b><span>Concierge Response</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE COACH NOW EXPERIENCE -->
+<section class="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Coach Now Difference</span>
+      <h2>An Experience Crafted for the <em>Discerning</em></h2>
+      <p>Every detail considered. Every session tailored. This is not a swimming lesson — it is a private coaching experience.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-num">01</div>
+        <h4>Elite Coaches Only</h4>
+        <p>Internationally certified professionals with 8+ years of experience, hand-selected and vetted for excellence.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-num">02</div>
+        <h4>Your Villa, Your Pool</h4>
+        <p>We arrive at your residence fully equipped. No travel, no waiting — just seamless, private instruction.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-num">03</div>
+        <h4>Bespoke Programming</h4>
+        <p>Every swimmer receives a custom training plan, reviewed and refined after each session for measurable progress.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-num">04</div>
+        <h4>Absolute Discretion</h4>
+        <p>Trusted by Dubai's most prominent families. Your privacy and schedule are treated with the utmost respect.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEET OUR COACHES -->
+<section class="coaches">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="color:var(--gold)">Our Elite Coaches</span>
+      <h2>Choose Your <em>Personal Coach</em></h2>
+      <p>Three distinguished professionals. One perfect match for your goals. Select the coach who resonates with you.</p>
+    </div>
+    <div class="coaches-grid">
+      <div class="coach-card reveal">
+        <div class="coach-img">
+          <span class="coach-tag">Adult Specialist</span>
+          <img src="https://image.qwenlm.ai/public_source/22ed6e37-b9ab-4896-8e2c-687eccfa00f7/11fc6aae3-6c55-485c-bf21-fe8841a6c837.png" alt="Coach Marcus Chen" loading="lazy" />
+        </div>
+        <div class="coach-body">
+          <h3>Marcus Chen</h3>
+          <div class="coach-role">Head Performance Coach</div>
+          <div class="coach-meta">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              12 Years Experience · Former Competitive Swimmer
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l8-8 2-5 2 7 7 2-5 2-8 8z"/></svg>
+              English · Mandarin · German
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.3 9 8.5"/></svg>
+              ★ 4.9 · 180+ Private Clients
+            </div>
+          </div>
+          <p class="coach-desc">Specialist in adult technique refinement, fear-of-water coaching, and triathlon preparation. Known for his calm, analytical approach.</p>
+          <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20book%20a%20session%20with%20Coach%20Marcus%20Chen." class="coach-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+            Book with Marcus
+          </a>
+        </div>
+      </div>
+
+      <div class="coach-card reveal">
+        <div class="coach-img">
+          <span class="coach-tag">Kids Specialist</span>
+          <img src="https://image.qwenlm.ai/public_source/22ed6e37-b9ab-4896-8e2c-687eccfa00f7/114947b39-179e-4c80-bcad-5b2330cdc83b.png" alt="Coach Layla Hassan" loading="lazy" />
+        </div>
+        <div class="coach-body">
+          <h3>Layla Hassan</h3>
+          <div class="coach-role">Youth Development Coach</div>
+          <div class="coach-meta">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              8 Years · Child Psychology Certified
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l8-8 2-5 2 7 7 2-5 2-8 8z"/></svg>
+              English · Arabic · French
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.3 9 8.5"/></svg>
+              ★ 5.0 · 220+ Young Swimmers
+            </div>
+          </div>
+          <p class="coach-desc">A warm, patient specialist for children ages 3–12. Expert in building water confidence through play-based learning and gentle progression.</p>
+          <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20book%20a%20session%20with%20Coach%20Layla%20Hassan%20for%20my%20child." class="coach-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+            Book with Layla
+          </a>
+        </div>
+      </div>
+
+      <div class="coach-card reveal">
+        <div class="coach-img">
+          <span class="coach-tag">All Levels</span>
+          <img src="https://image.qwenlm.ai/public_source/22ed6e37-b9ab-4896-8e2c-687eccfa00f7/1ac95bf9d-f5d7-400b-8439-d5992ea0a535.png" alt="Coach Diego Martinez" loading="lazy" />
+        </div>
+        <div class="coach-body">
+          <h3>Diego Martinez</h3>
+          <div class="coach-role">Performance & Technique Coach</div>
+          <div class="coach-meta">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              10 Years · Triathlon & Competitive
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l8-8 2-5 2 7 7 2-5 2-8 8z"/></svg>
+              English · Spanish · Portuguese
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.3 9 8.5"/></svg>
+              ★ 4.9 · 150+ Private Clients
+            </div>
+          </div>
+          <p class="coach-desc">Energetic and motivating. Ideal for swimmers seeking to master all four strokes, improve endurance, or prepare for competitive events.</p>
+          <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20book%20a%20session%20with%20Coach%20Diego%20Martinez." class="coach-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+            Book with Diego
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Who We Serve</span>
+      <h2>Tailored for Every <em>Stage of Life</em></h2>
+      <p>Whether guiding your child's first splash or refining your own technique — we meet you exactly where you are.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <div class="audience-img">
+          <img src="https://image.qwenlm.ai/public_source/22ed6e37-b9ab-4896-8e2c-687eccfa00f7/1f18af0ef-c21c-44be-8605-ced51c893926.png" alt="Kids swimming lesson in Dubai" loading="lazy" />
+        </div>
+        <div class="audience-body">
+          <span class="eyebrow">For Young Swimmers</span>
+          <h3>Children Ages 3–12</h3>
+          <p>A gentle, joyful introduction to the water that builds lifelong confidence and essential safety skills.</p>
+          <ul>
+            <li><strong>Water Safety Mastery</strong> — Survival skills taught through play.</li>
+            <li><strong>Fear-Free Progression</strong> — Patient, child-led approach.</li>
+            <li><strong>Confidence Building</strong> — From first splash to independent swimming.</li>
+            <li><strong>Child-Specialist Coaches</strong> — Background-checked, pedagogy-trained.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-img">
+          <img src="https://image.qwenlm.ai/public_source/22ed6e37-b9ab-4896-8e2c-687eccfa00f7/1f6b9d7cb-55e5-437c-92ca-6ce1635fde52.png" alt="Adult swimming training in Dubai" loading="lazy" />
+        </div>
+        <div class="audience-body">
+          <span class="eyebrow">For Adults</span>
+          <h3>Beginners to Advanced</h3>
+          <p>A refined, judgment-free environment where adults master the water at their own pace.</p>
+          <ul>
+            <li><strong>Zero-Pressure Environment</strong> — Complete privacy and discretion.</li>
+            <li><strong>Fear of Water Coaching</strong> — Specialized, empathetic methodology.</li>
+            <li><strong>Technique Refinement</strong> — Stroke analysis and performance gains.</li>
+            <li><strong>Flexible Scheduling</strong> — Early morning, lunch, or evening slots.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Process</span>
+      <h2>Your Concierge <em>Experience</em></h2>
+      <p>Three effortless steps from inquiry to your first private session.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">I</div>
+        <div class="step-icon">✦</div>
+        <h3>Private Inquiry</h3>
+        <p>Send us a discreet WhatsApp message. Share your goals, preferred coach, and villa community.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">II</div>
+        <div class="step-icon">✦</div>
+        <h3>Personal Matching</h3>
+        <p>Our concierge reviews your needs and matches you with the ideal coach within 24 hours.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">III</div>
+        <div class="step-icon">✦</div>
+        <h3>Bespoke Sessions</h3>
+        <p>Your coach arrives at your villa, fully equipped, ready to deliver a tailored private lesson.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px" class="reveal">
+      <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20private%20swimming%20lessons." class="btn-wa" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+        Begin Your Private Journey
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Investment</span>
+      <h2>Transparent <em>Private Pricing</em></h2>
+      <p>Refined experiences, clearly presented. No hidden fees, no surprises.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <span class="eyebrow">Single Session</span>
+        <h3>Private Lesson</h3>
+        <div class="price">250 <small>AED / session</small></div>
+        <p class="tagline">Ideal for a trial or occasional refinement.</p>
+        <ul>
+          <li>60-minute private home session</li>
+          <li>Coach travel across Dubai included</li>
+          <li>Personalized technique feedback</li>
+          <li>All skill levels welcome</li>
+        </ul>
+        <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20book%20a%20single%20private%20swimming%20session." class="btn-wa" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+          Reserve a Session
+        </a>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-badge">Most Selected</div>
+        <span class="eyebrow">Monthly Commitment</span>
+        <h3>The Coach Now Package</h3>
+        <div class="price">1,800 <small>AED / month</small></div>
+        <p class="tagline">8 private sessions · Save 200 AED monthly.</p>
+        <ul>
+          <li>8 private home sessions per month</li>
+          <li>Your dedicated coach, every session</li>
+          <li>Priority scheduling & flexibility</li>
+          <li>Monthly progress reports</li>
+          <li>Complimentary technique video analysis</li>
+        </ul>
+        <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20book%20the%20Coach%20Now%20monthly%20package%20(8%20sessions)." class="btn-wa" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+          Select Coach Now Package
+        </a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:36px;color:var(--muted);font-size:.9rem;font-weight:300" class="reveal">All sessions delivered to your private villa pool in Dubai. Custom arrangements available upon request.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Client Voices</span>
+      <h2>Trusted by Dubai's Most <em>Discerning</em> Families</h2>
+      <p>A selection of reflections from our private clientele.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="stars">✦  ✦ ✦ </div>
+        <p>"Coach Layla transformed my daughter's relationship with water. In just four sessions, she went from fearful to confidently jumping in. The professionalism and discretion were impeccable."</p>
+        <div class="author">
+          <div class="avatar">SM</div>
+          <div class="author-info"><b>Sarah M.</b><span>Palm Jumeirah</span></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">✦ ✦ ✦ ✦ </div>
+        <p>"As an adult who had avoided pools my entire life, Marcus made me feel completely at ease. Six months later, I swim 500m freestyle with confidence. A truly refined coaching experience."</p>
+        <div class="author">
+          <div class="avatar">MT</div>
+          <div class="author-info"><b>Mark T.</b><span>Emirates Hills</span></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">✦ ✦ ✦ ✦ </div>
+        <p>"The convenience is unmatched. Diego arrives at our villa pool precisely on time, fully prepared. The children adore him, and the progress has been remarkable. Worth every dirham."</p>
+        <div class="author">
+          <div class="avatar">AK</div>
+          <div class="author-info"><b>Aisha K.</b><span>Arabian Ranches</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="reveal">Begin Your <em>Private Journey</em></h2>
+    <p class="reveal">Our coaches accept a limited number of private clients each month to ensure the highest quality of instruction. Secure your preferred time today.</p>
+    <a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20private%20swimming%20lessons." class="btn-wa pulse reveal" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+      Request Your Private Session
+    </a>
+    <p class="final-micro reveal">✦ Concierge response within 24 hours</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="color:#fff">
+          <span class="logo-mark">C</span>
+          <div>
+            Coach Now
+            <small>DUBAI · EST. 2024</small>
+          </div>
+        </div>
+        <p>Dubai's most exclusive private swimming coaching. Bespoke lessons delivered to your villa by elite, internationally-certified coaches.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1 .3-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 2c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm0 7.2a2.8 2.8 0 1 0 0-5.6 2.8 2.8 0 0 0 0 5.6zm5.6-7.4a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12c0-6.6-5.4-12-12-12S0 5.4 0 12c0 6 4.4 11 10.1 11.9V15.5H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4C19.6 23 24 18 24 12z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#">Our Coaches</a></li>
+          <li><a href="#">The Experience</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Client Voices</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact Us</h5>
+        <ul>
+          <li><a href="https://wa.me/971586963518">+971 58 696 3518</a></li>
+          <li><a href="mailto:concierge@coachnow.ae">concierge@coachnow.ae</a></li>
+          <li>Dubai, United Arab Emirates</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Coach Now Dubai. All rights reserved. · <a href="#">Privacy</a> · <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/971586963518?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20private%20swimming%20lessons." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.09.55 4.13 1.6 5.93L0 24l6.33-1.66a11.88 11.88 0 0 0 5.73 1.46h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.43zM12.07 21.6h-.01a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.75.98 1-3.66-.23-.37a9.72 9.72 0 0 1-1.49-5.09c0-5.39 4.39-9.77 9.78-9.77 2.61 0 5.06 1.02 6.91 2.87a9.72 9.72 0 0 1 2.86 6.91c0 5.39-4.38 9.7-9.71 9.7zm5.33-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.15-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.73-1.62-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.51.07-.77.36-.27.29-1.01.98-1.01 2.4s1.04 2.78 1.18 2.97c.14.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/></svg>
+</a>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
 </html>
+
