@@ -186,17 +186,35 @@ header{
   display:flex;align-items:center;
   color:#fff;overflow:hidden;
 }
-.hero-bg{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(135deg, rgba(10,22,40,.72) 0%, rgba(10,22,40,.45) 45%, rgba(10,22,40,.25) 100%),
-    url('https://images.unsplash.com/photo-1577896851557-9eaf4fd0b3ce?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
-  z-index:-1;
+.hero-slider{
+  position:absolute;inset:0;overflow:hidden;z-index:-2;
 }
-.hero-bg::after{
+.hero-slide{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;
+  transition:opacity 1.8s ease;
+}
+.hero-slide.active{opacity:1}
+.hero-overlay{
+  position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(135deg, rgba(10,22,40,.72) 0%, rgba(10,22,40,.45) 45%, rgba(10,22,40,.25) 100%);
+}
+.hero-overlay::after{
   content:"";position:absolute;inset:0;
   background:radial-gradient(ellipse at top right, rgba(201,169,97,.12), transparent 50%);
 }
+.hero-dots{
+  position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
+  display:flex;gap:10px;z-index:2;
+}
+.hero-dot{
+  width:28px;height:3px;border-radius:2px;
+  background:rgba(255,255,255,.35);
+  border:none;padding:0;cursor:pointer;
+  transition:background .3s ease;
+}
+.hero-dot.active{background:var(--gold)}
 .hero-content{padding:100px 0 120px;max-width:780px}
 .hero-badge{
   display:inline-flex;align-items:center;gap:10px;
@@ -558,7 +576,19 @@ footer li{padding:7px 0}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-slider" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1577896851557-9eaf4fd0b3ce?w=1600&auto=format&fit=crop&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=1600&auto=format&fit=crop&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1651614158095-b98b6c1da74b?w=1600&auto=format&fit=crop&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1630049038179-afaaebb62fe2?w=1600&auto=format&fit=crop&q=80')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-dots" role="tablist" aria-label="Hero image slides">
+    <button class="hero-dot active" type="button" role="tab" aria-selected="true" aria-label="Slide 1: one-on-one villa training"></button>
+    <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 2: technique training"></button>
+    <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 3: kids swim training"></button>
+    <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 4: adult swim training"></button>
+  </div>
   <div class="container hero-content">
     <div class="hero-badge reveal">
       <span class="dot"></span>
@@ -984,6 +1014,32 @@ footer li{padding:7px 0}
     });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Hero carousel
+  (function(){
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    if(!slides.length) return;
+    let current = 0;
+    let timer;
+    function show(i){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      dots[current].setAttribute('aria-selected','false');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      dots[current].setAttribute('aria-selected','true');
+    }
+    function next(){ show((current + 1) % slides.length); }
+    function start(){ timer = setInterval(next, 6000); }
+    function stop(){ clearInterval(timer); }
+    dots.forEach((dot, i)=>{
+      dot.addEventListener('click', ()=>{ stop(); show(i); start(); });
+    });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!reduceMotion){ start(); }
+  })();
 </script>
 
 </body>
