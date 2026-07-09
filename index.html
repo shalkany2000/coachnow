@@ -8,14 +8,18 @@
 <meta name="keywords" content="swimming lessons Dubai, home swimming coach Dubai, private swim instructor Dubai, kids swimming lessons Dubai, adult swimming lessons Dubai, villa pool swim coach, female swim coach Dubai">
 <meta name="robots" content="index, follow">
 <meta name="author" content="CoachNow">
-<link rel="canonical" href="https://www.coachnow.ae/">
+<meta name="theme-color" content="#0A2540">
+<meta name="geo.region" content="AE-DU">
+<meta name="geo.placename" content="Dubai">
+<link rel="canonical" href="https://www.coachnow.app/">
+<link rel="alternate" hreflang="en-ae" href="https://www.coachnow.app/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CoachNow">
 <meta property="og:title" content="CoachNow | Private Home Swimming Lessons in Dubai">
 <meta property="og:description" content="Certified swim coaches who come to your home pool in Dubai. Kids, adults, and female-coach options available across Marina, JVC, Downtown, Palm & Arabian Ranches.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200&auto=format&fit=crop">
-<meta property="og:url" content="https://www.coachnow.ae/">
+<meta property="og:url" content="https://www.coachnow.app/">
 <meta property="og:locale" content="en_AE">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -24,6 +28,8 @@
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200&auto=format&fit=crop">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1974&auto=format&fit=crop">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
@@ -32,6 +38,7 @@
   "name": "CoachNow",
   "description": "Private, home-service swimming coaching platform in Dubai connecting customers with certified swim coaches for lessons at home pools.",
   "image": "https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200&auto=format&fit=crop",
+  "url": "https://www.coachnow.app/",
   "telephone": "+971586963518",
   "priceRange": "AED 250 - AED 2400",
   "areaServed": [
@@ -50,7 +57,75 @@
     "@type": "AggregateRating",
     "ratingValue": "4.9",
     "reviewCount": "128"
-  }
+  },
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "name": "Starter — 1 Session",
+      "price": "250",
+      "priceCurrency": "AED"
+    },
+    {
+      "@type": "Offer",
+      "name": "Popular — 8 Sessions",
+      "price": "1800",
+      "priceCurrency": "AED"
+    },
+    {
+      "@type": "Offer",
+      "name": "Premium — 12 Sessions",
+      "price": "2400",
+      "priceCurrency": "AED"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need my own pool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, sessions take place in your home or community pool. If you don't have access to one, let us know and we can suggest partner venues nearby."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What ages do you coach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We coach children from age 3 through adults of any age and skill level, including complete beginners."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I request a female coach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — select Female Coaches when booking, or mention it via WhatsApp, and we'll match you accordingly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I need to reschedule?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can reschedule any session up to 12 hours in advance at no charge, directly through WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are coaches insured and background-checked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every coach on CoachNow completes identity verification, a background check, and holds a valid swim instruction certification before joining."
+      }
+    }
+  ]
 }
 </script>
 <style>
@@ -468,6 +543,8 @@
     .steps::before{display:none;}
     .coverage-wrap{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
+    .why,.services,.pricing,.how,.coaches,.testimonials,.coverage,.faq{padding-top:72px;padding-bottom:72px;}
+    .final-cta{padding:96px 0;}
   }
   @media (max-width:760px){
     .nav-links{position:fixed;top:0;right:0;height:100vh;width:78%;max-width:320px;
@@ -476,10 +553,28 @@
     .nav-links.open{transform:translateX(0);}
     .nav-links a{color:white;font-size:17px;}
     .burger{display:flex;}
+    .header-phone{display:none;}
     .nav-cta .btn-sm{padding:9px 16px;font-size:12.5px;}
     .why-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr;gap:30px;}
     .footer-bottom{flex-direction:column;align-items:flex-start;}
+    .hero{min-height:auto;padding:120px 0 72px;}
+    .hero-ctas{flex-direction:column;align-items:stretch;}
+    .hero-ctas .btn{width:100%;}
+    .section-head{margin-bottom:34px;}
+    .coach-card{min-width:230px;}
+    .testi-card{min-width:82vw;max-width:82vw;}
+  }
+  @media (max-width:420px){
+    .wrap{padding:0 18px;}
+    .hero h1{font-size:30px;}
+    .why-card,.price-card{padding:26px 20px;}
+    .final-cta{padding:76px 0;}
+    .final-ctas{flex-direction:column;width:100%;}
+    .final-ctas .btn{width:100%;}
+  }
+  @media (min-width:1400px){
+    .wrap{max-width:1320px;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -498,7 +593,7 @@
       </span>
       CoachNow
     </a>
-    <nav class="nav-links" id="navLinks">
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#why">Why Us</a>
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
@@ -506,8 +601,8 @@
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-cta">
-      <a href="tel:+971586963518" class="header-phone" aria-label="Call CoachNow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20book%20a%20swimming%20lesson." target="_blank" class="header-phone" aria-label="Chat with CoachNow on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A8.86 8.86 0 0012.05 4a8.94 8.94 0 00-7.75 13.4L3 21l3.7-1.28a8.9 8.9 0 004.33 1.13h.01a8.94 8.94 0 008.95-8.9 8.86 8.86 0 00-2.4-6.63zM12.05 19.4a7.4 7.4 0 01-3.78-1.03l-.27-.16-2.8.98.94-2.73-.18-.28a7.4 7.4 0 1113.75-3.86 7.42 7.42 0 01-7.66 7.08zm4.08-5.55c-.22-.11-1.31-.65-1.52-.72-.2-.08-.35-.11-.5.11s-.57.72-.7.87-.26.16-.48.05a6.06 6.06 0 01-1.79-1.1 6.7 6.7 0 01-1.24-1.54c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.1-.12.14-.22.21-.36a.4.4 0 000-.39c-.06-.11-.5-1.21-.68-1.66-.18-.43-.36-.37-.5-.38h-.43a.82.82 0 00-.6.28 2.5 2.5 0 00-.78 1.86c0 1.1.8 2.16.91 2.31.11.14 1.58 2.42 3.84 3.39.54.23.96.37 1.28.47.54.17 1.03.15 1.42.09.43-.06 1.31-.53 1.5-1.05.18-.51.18-.95.13-1.05-.05-.1-.2-.16-.42-.27z"/></svg>
         <span>+971 58 696 3518</span>
       </a>
       <a href="#pricing" class="btn btn-primary btn-sm">Book Now</a>
@@ -517,6 +612,7 @@
 </header>
 
 <!-- HERO -->
+<main>
 <section class="hero" id="top">
   <div class="ripple-deco">
     <div class="ripple-ring" style="width:100%;height:100%;left:0;top:0;"></div>
@@ -553,9 +649,9 @@
           All of Dubai covered
         </div>
       </div>
-      <a href="tel:+971586963518" class="hero-phone">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call or WhatsApp +971 58 696 3518
+      <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20book%20a%20swimming%20lesson." target="_blank" class="hero-phone">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A8.86 8.86 0 0012.05 4a8.94 8.94 0 00-7.75 13.4L3 21l3.7-1.28a8.9 8.9 0 004.33 1.13h.01a8.94 8.94 0 008.95-8.9 8.86 8.86 0 00-2.4-6.63zM12.05 19.4a7.4 7.4 0 01-3.78-1.03l-.27-.16-2.8.98.94-2.73-.18-.28a7.4 7.4 0 1113.75-3.86 7.42 7.42 0 01-7.66 7.08zm4.08-5.55c-.22-.11-1.31-.65-1.52-.72-.2-.08-.35-.11-.5.11s-.57.72-.7.87-.26.16-.48.05a6.06 6.06 0 01-1.79-1.1 6.7 6.7 0 01-1.24-1.54c-.13-.22 0-.34.1-.45.1-.1.22-.26.33-.4.1-.12.14-.22.21-.36a.4.4 0 000-.39c-.06-.11-.5-1.21-.68-1.66-.18-.43-.36-.37-.5-.38h-.43a.82.82 0 00-.6.28 2.5 2.5 0 00-.78 1.86c0 1.1.8 2.16.91 2.31.11.14 1.58 2.42 3.84 3.39.54.23.96.37 1.28.47.54.17 1.03.15 1.42.09.43-.06 1.31-.53 1.5-1.05.18-.51.18-.95.13-1.05-.05-.1-.2-.16-.42-.27z"/></svg>
+          Chat on WhatsApp — +971 58 696 3518
       </a>
     </div>
   </div>
@@ -667,7 +763,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Certified coach</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Flexible rescheduling</li>
         </ul>
-        <a href="tel:+971586963518" class="btn btn-navy">Choose Starter</a>
+        <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20book%20the%20Starter%20package%20(1%20session)." target="_blank" class="btn btn-navy">Choose Starter</a>
       </div>
       <div class="price-card popular fade-in">
         <span class="popular-badge">Most Popular</span>
@@ -682,7 +778,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Progress updates after each session</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Priority scheduling</li>
         </ul>
-        <a href="tel:+971586963518" class="btn btn-primary">Choose Popular</a>
+        <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20book%20the%20Popular%20package%20(8%20sessions)." target="_blank" class="btn btn-primary">Choose Popular</a>
       </div>
       <div class="price-card fade-in">
         <div class="price-tier">Premium</div>
@@ -696,7 +792,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Personalized training plan</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Dedicated coach + priority support</li>
         </ul>
-        <a href="tel:+971586963518" class="btn btn-navy">Choose Premium</a>
+        <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20book%20the%20Premium%20package%20(12%20sessions)." target="_blank" class="btn btn-navy">Choose Premium</a>
       </div>
     </div>
   </div>
@@ -755,7 +851,7 @@
             <span>5.0</span>
           </div>
           <div class="coach-certs"><span class="cert-chip">STA Certified</span><span class="cert-chip">First Aid</span></div>
-          <a href="tel:+971586963518" class="btn btn-navy btn-sm">Request Coach</a>
+          <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20request%20Coach%20Yasmin." target="_blank" class="btn btn-navy btn-sm">Request Coach</a>
         </div>
       </div>
       <div class="coach-card fade-in">
@@ -774,7 +870,7 @@
             <span>4.9</span>
           </div>
           <div class="coach-certs"><span class="cert-chip">ASA Level 2</span><span class="cert-chip">CPR</span></div>
-          <a href="tel:+971586963518" class="btn btn-navy btn-sm">Request Coach</a>
+          <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20request%20Coach%20Omar." target="_blank" class="btn btn-navy btn-sm">Request Coach</a>
         </div>
       </div>
       <div class="coach-card fade-in">
@@ -793,7 +889,7 @@
             <span>5.0</span>
           </div>
           <div class="coach-certs"><span class="cert-chip">STA Certified</span><span class="cert-chip">First Aid</span></div>
-          <a href="tel:+971586963518" class="btn btn-navy btn-sm">Request Coach</a>
+          <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20request%20Coach%20Layla." target="_blank" class="btn btn-navy btn-sm">Request Coach</a>
         </div>
       </div>
       <div class="coach-card fade-in">
@@ -812,7 +908,7 @@
             <span>4.8</span>
           </div>
           <div class="coach-certs"><span class="cert-chip">ASA Level 3</span><span class="cert-chip">CPR</span></div>
-          <a href="tel:+971586963518" class="btn btn-navy btn-sm">Request Coach</a>
+          <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20request%20Coach%20Karim." target="_blank" class="btn btn-navy btn-sm">Request Coach</a>
         </div>
       </div>
     </div>
@@ -952,6 +1048,8 @@
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="wrap">
     <div class="footer-grid">
@@ -962,7 +1060,7 @@
         </div>
         <p style="font-size:14px;max-width:280px;">Dubai's private, home-service swim coaching platform. Certified coaches, at your pool.</p>
         <address style="font-style:normal;font-size:14px;margin-top:14px;">
-          <a href="tel:+971586963518" style="color:var(--aqua-light);font-weight:600;">+971 58 696 3518</a><br>
+          <a href="https://wa.me/971586963518?text=Hi%20CoachNow%2C%20I%27d%20like%20to%20book%20a%20swimming%20lesson." target="_blank" style="color:var(--aqua-light);font-weight:600;">+971 58 696 3518</a><br>
           Serving all of Dubai, UAE
         </address>
         <div class="social-row" style="margin-top:22px;">
